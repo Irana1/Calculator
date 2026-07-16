@@ -11,15 +11,12 @@
     <section id="calc-section">
         <label for="first-number">First Number:</label>
         <input type="number" id="first-number" required>
-        <select name="operators" id="operators">
-            <option value="addition">+</option>
-            <option value="subtraction">-</option>
-            <option value="multiplication">*</option>
-            <option value="division">/</option>
-        </select>
         <label for="second-number">Second Number:</label>
         <input type="number" id="second-number" required>
-        <button type="button" id="calculate">Calculate</button>
+        <button type="button" id="operation-btn" data-operation="add">+</button>
+        <button type="button" id="operation-btn" data-operation="subtract">-</button>
+        <button type="button" id="operation-btn" data-operation="multiply">*</button>
+        <button type="button" id="operation-btn" data-operation="divide">/</button>
     </section>
     <div id="result-container">
 
