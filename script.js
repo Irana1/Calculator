@@ -2,8 +2,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const firstNumberInput = document.querySelector("#first-number");
     const secondNumberInput = document.querySelector("#second-number");
     const operationButtons = document.querySelectorAll("#operation-btn")
+    const clearInputButton = document.querySelector("#clear-input");
     const resultContainer = document.querySelector("#result-container");
+    const historyList = document.querySelector("#history-list");
+    const clearHistoryButton = document.querySelector("#clear-history");
 
+    
     function calculate(operation) {
         const firstNumber = parseFloat(firstNumberInput.value);
         const secondNumber = parseFloat(secondNumberInput.value);
@@ -35,11 +39,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
             default:
                 window.alert("Please enter a valid operation.");
                 return;
-                
         }
 
+        addToHistory(firstNumber, operation, secondNumber, result);
         return result;
-    } 
+    }
+
+    function addToHistory(firstNumber, operation, secondNumber, result) {
+        const symbols = {
+            add: "+",
+            subtract: "-",
+            multiply: "*",
+            divide: "/"
+        }
+
+        const historyText = `${firstNumber} ${symbols[operation]} ${secondNumber} = ${result}`;
+        const historyItem = document.createElement("li");
+        historyItem.textContent = historyText;
+        historyList.appendChild(historyItem);
+    }
 
     for (const button of operationButtons) {
         button.addEventListener("click", function(event) {
@@ -55,4 +73,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
             resultContainer.appendChild(resultSpan);
         })
     }
+
+    clearInputButton.addEventListener("click", function(event) {
+        event.preventDefault;
+
+        firstNumberInput.value = "";
+        secondNumberInput.value = "";
+        resultContainer.innerHTML = "";
+        firstNumberInput.focus();
+    })
+
+    clearHistoryButton.addEventListener("click", function(event) {
+        event.preventDefault;
+
+        historyList.innerHTML = "";
+    })
 })

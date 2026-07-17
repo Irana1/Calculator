@@ -56,5 +56,6 @@ Here's what I did to fix all of the issues:
     - Add a ```default``` case.
         Added a window alert to check for invalid operations.
 
-    
+## Second Issue
+    Had an issue with displaying the history list items on the webpage **The function call was below the return statement so it wouldn't run.**
 
